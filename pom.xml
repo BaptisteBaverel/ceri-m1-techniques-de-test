@@ -5,8 +5,65 @@
   <artifactId>ceri-m1-techniques-de-test</artifactId>
   <version>1</version>
   <build>
-  	<defaultGoal>install</defaultGoal>
+    <defaultGoal>install</defaultGoal>
+    <pluginManagement>
+      <plugins>
+	    <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-shade-plugin</artifactId>
+			<version>3.2.0</version>
+			<executions>
+				<execution>
+					<phase>test</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-shade-plugin</artifactId>
+			<version>3.2.0</version>
+			<executions>
+				<execution>
+					<phase>compile</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-shade-plugin</artifactId>
+			<version>3.2.0</version>
+			<executions>
+				<execution>
+					<phase>validate</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-shade-plugin</artifactId>
+			<version>3.2.0</version>
+			<executions>
+				<execution>
+					<phase>deploy</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
   
   <dependencies>
   	<dependency>
