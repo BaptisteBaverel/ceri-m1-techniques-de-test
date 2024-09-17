@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
       - run: mvn -B -DskipTests clean package
-  
   test:
     docker:
       - image: cimg/openjdk:11.0
