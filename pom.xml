@@ -1,0 +1,36 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>fr.univavignon.pokedex.api</groupId>
+  <artifactId>ceri-m1-techniques-de-test</artifactId>
+  <version>1</version>
+  <build>
+  	<defaultGoal>install</defaultGoal>
+  </build>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-engine</artifactId>
+		<version>5.2.0</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.junit.platform</groupId>
+		<artifactId>junit-platform-runner</artifactId>
+		<version>1.2.0</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-core</artifactId>
+	    <version>5.13.0</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-collections4</artifactId>
+		<version>4.0</version>
+	</dependency>
+  </dependencies>
+</project>
