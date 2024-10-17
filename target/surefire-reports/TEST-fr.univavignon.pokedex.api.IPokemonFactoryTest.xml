@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.univavignon.pokedex.api.IPokedexFactoryTest" time="0" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -54,7 +54,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="createPokedexTest" classname="fr.univavignon.pokedex.api.IPokedexFactoryTest" time="0"/>
-  <testcase name="createPokedexNullPokemonFactoryExceptionTest" classname="fr.univavignon.pokedex.api.IPokedexFactoryTest" time="0"/>
-  <testcase name="createPokedexNullMetadataExceptionTest" classname="fr.univavignon.pokedex.api.IPokedexFactoryTest" time="0"/>
+  <testcase name="createPokemonInvalidDustTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
+  <testcase name="createPokemonInvalidCandyTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
+  <testcase name="createPokemonInvalidCPTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
+  <testcase name="createPokemonInvalidHPTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
+  <testcase name="createPokemonTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
+  <testcase name="createPokemonInvalidIdTest" classname="fr.univavignon.pokedex.api.IPokemonFactoryTest" time="0"/>
 </testsuite>
