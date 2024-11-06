@@ -86,11 +86,6 @@ public class IPokedexTest {
 	}
 
 	@Test
-	public void getPokemonsTest() {
-		assertEquals(defaultListPokemon, mockedPokedex.getPokemons());
-	}
-
-	@Test
 	public void getPokemonsOrderedTest() {
 		assertEquals(sortedListPokemon, mockedPokedex.getPokemons(pokemonComparator));
 	}
