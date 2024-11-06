@@ -70,10 +70,10 @@ public class IPokedexTest {
 		assertEquals(aquali, mockedPokedex.getPokemon(2));
 
 		PokedexException exception1 = assertThrows(PokedexException.class, () -> {
-			mockedPokedex.getPokemonMetadata(-1);
+			mockedPokedex.getPokemon(-1);
 		});
 		PokedexException exception2 = assertThrows(PokedexException.class, () -> {
-			mockedPokedex.getPokemonMetadata(155);
+			mockedPokedex.getPokemon(155);
 		});
 
 		assertEquals(exception1.getMessage(), "Invalid Id");
