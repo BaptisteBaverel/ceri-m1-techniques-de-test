@@ -1,34 +1,28 @@
 version: 2.1
 
 orbs:
-    codecov: codecov/codecov@4.0.1
+  maven: circleci/maven@1.4.1
+  codecov: codecov/codecov@4.0.1
 
-# Define the jobs we want to run for this project
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: mvn -B -DskipTests clean package
+      - run: echo "Build job"
+      - run: mvn clean install
+
   test:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: mvn -B test
+      - run: mvn test
       - codecov/upload
 
 workflows:
-  build_and_test:
+  maven_test:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-      - test:
-          filters:
-            branches:
-              only:
-                - master
+      - build
+      - test
