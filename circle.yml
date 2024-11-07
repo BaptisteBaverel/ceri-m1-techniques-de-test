@@ -4,25 +4,33 @@ orbs:
   maven: circleci/maven@1.4.1
   codecov: codecov/codecov@4.0.1
 
+# Define the jobs we want to run for this project
 jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: echo "Build job"
-      - run: mvn clean install
-
+      - run: mvn -B -DskipTests clean package
   test:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: mvn test
+      - run: mvn -B test
+      - run: mvn jacoco:report
       - codecov/upload
 
 workflows:
-  maven_test:
+  build_and_test:
     jobs:
-      - build
-      - test
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - test:
+          filters:
+            branches:
+              only:
+                - master
