@@ -17,7 +17,6 @@ jobs:
     steps:
       - checkout
       - run: mvn -B test
-      - run: mvn jacoco:report
       - codecov/upload
 
 workflows:
