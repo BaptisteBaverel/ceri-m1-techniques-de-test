@@ -145,9 +145,10 @@
 		</dependency>
   </dependencies>
 	<repositories>
-	<repository>
-		<id>repoTest</id>
-		<name>Test</name>
-		<url>src/test/java</url>
-	</repository>
+		<repository>
+			<id>repoTest</id>
+			<name>Test</name>
+			<url>src/test/java</url>
+		</repository>
+	</repositories>
 </project>
