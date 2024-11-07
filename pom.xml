@@ -3,6 +3,9 @@
   <groupId>fr.univavignon.pokedex.api</groupId>
   <artifactId>ceri-m1-techniques-de-test</artifactId>
   <version>1</version>
+	<packaging>jar</packaging>
+
+	<name>TP Pokedex</name>
 	<url>http://maven.apache.org</url>
   <build>
     <defaultGoal>install</defaultGoal>
