@@ -14,6 +14,13 @@ jobs:
     steps:
       - checkout
       - run: mvn test
+  codecov:
+    uses: codecov/codecov-action@v4
+    with:
+      verbose: true
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
 
 workflows:
   build_and_test:
@@ -28,3 +35,7 @@ workflows:
             branches:
               only:
                 - master
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
