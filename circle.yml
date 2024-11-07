@@ -13,8 +13,7 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
-      - run: mvn -B test
-      - codecov/upload
+      - run: mvn test
 
 workflows:
   build_and_test:
@@ -29,11 +28,3 @@ workflows:
             branches:
               only:
                 - master
-
-orbs:
-  codecov: codecov/codecov@4.0.1
-  workflows:
-    upload-to-codecov:
-      jobs:
-        - checkout
-        - codecov/upload
