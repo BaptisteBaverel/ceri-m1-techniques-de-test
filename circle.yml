@@ -18,8 +18,7 @@ jobs:
       - checkout
       - run: mvn -B test
       - run: mvn jacoco:report
-      - codecov/upload:
-          file: target/site/jacoco/jacoco.xml
+      - codecov/upload
 
 workflows:
   build_and_test:
