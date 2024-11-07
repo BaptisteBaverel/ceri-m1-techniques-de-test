@@ -16,6 +16,7 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
+      - run: mvn -B clean package
       - run: mvn -B test
       - codecov/upload
 
