@@ -14,7 +14,10 @@ jobs:
     steps:
       - checkout
       - run: mvn test
-
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
 workflows:
   build_and_test:
     jobs:
@@ -28,10 +31,6 @@ workflows:
             branches:
               only:
                 - master
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
 
 orbs:
   codecov: codecov/codecov@4.0.1
