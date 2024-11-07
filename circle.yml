@@ -10,6 +10,7 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
+      - run: mvn install
       - run: mvn -B -DskipTests clean package
   test:
     docker:
@@ -18,7 +19,6 @@ jobs:
       - checkout
       - run: mvn -B test
       - run: mvn jacoco:report
-      - run: ls -R target/
       - codecov/upload:
           file: target/site/jacoco/jacoco.xml
 
