@@ -144,4 +144,10 @@
 			<version>0.8.7</version>
 		</dependency>
   </dependencies>
+	<repositories>
+	<repository>
+		<id>repoTest</id>
+		<name>Test</name>
+		<url>src/test/java</url>
+	</repository>
 </project>
