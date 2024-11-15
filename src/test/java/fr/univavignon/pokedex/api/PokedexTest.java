@@ -17,15 +17,9 @@ public class PokedexTest {
 	private List<Pokemon> sortedListPokemon;
 	private PokemonMetadata defaultPokemonMetadata;
 
-
-	private PokemonMetadataProvider pokemonMetadataProvider;
-*	private PokemonFactory pokemonFactory;
-	private PokedexFactory pokedexFactory;
-
 	@Before
 	public void initTestEnvironment() {
 		defaultPokemonMetadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
-		pokemonFactory = new PokemonFactory();
 
 
 		pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
