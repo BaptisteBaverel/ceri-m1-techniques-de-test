@@ -14,10 +14,12 @@ import java.util.List;
 public class Pokedex implements IPokedex {
 	private final PokemonMetadataProvider pokemonMetadataProvider;
 	private final PokemonFactory pokemonFactory;
+	List<Pokemon> pokemonList;
 
 	Pokedex() {
-		pokemonMetadataProvider = new PokemonMetadataProvider();
-		pokemonFactory = new PokemonFactory();
+		this.pokemonMetadataProvider = new PokemonMetadataProvider();
+		this.pokemonFactory = new PokemonFactory();
+		this.pokemonList = new ArrayList<Pokemon>();
 	}
 
 	public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
@@ -28,7 +30,6 @@ public class Pokedex implements IPokedex {
 		return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
 	}
 
-	List<Pokemon> pokemonList;
 	/**
 	 * Returns the number of pokemon this pokedex contains.
 	 * 
