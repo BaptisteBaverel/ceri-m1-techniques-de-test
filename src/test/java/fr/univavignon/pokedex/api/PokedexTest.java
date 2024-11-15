@@ -73,11 +73,11 @@ public class PokedexTest {
 
 	@Test
 	public void getPokemonsTest() {
-		assertEquals(defaultListPokemon, pokedex.getPokemons());
+		assertEquals(defaultListPokemon, pokedexFormated.getPokemons());
 	}
 
 	@Test
 	public void getPokemonsOrderedTest() {
-		assertEquals(sortedListPokemon, pokedex.getPokemons(pokemonComparator));
+		assertEquals(sortedListPokemon, pokedexFormated.getPokemons(pokemonComparator));
 	}
 }
