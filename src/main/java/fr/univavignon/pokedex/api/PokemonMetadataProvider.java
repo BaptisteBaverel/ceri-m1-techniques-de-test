@@ -6,7 +6,7 @@ package fr.univavignon.pokedex.api;
  *
  * @author fv
  */
-public class PokemonMetadataProvider {
+public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     /**
      * Retrieves and returns the metadata for the pokemon
      * denoted by the given <tt>index</tt>.
@@ -15,7 +15,7 @@ public class PokemonMetadataProvider {
      * @return Metadata of the pokemon.
      * @throws PokedexException If the given <tt>index</tt> is not valid.
      */
-    PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         if(index > 150 || index < 0) {
             throw new PokedexException("Invalid Id");
         }
