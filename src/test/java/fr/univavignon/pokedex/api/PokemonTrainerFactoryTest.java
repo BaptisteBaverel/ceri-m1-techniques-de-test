@@ -2,14 +2,10 @@ package fr.univavignon.pokedex.api;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.mockito.Mockito;
-import java.lang.IllegalArgumentException;
-
-public class IPokemonTrainerFactoryTest {
+public class PokemonTrainerFactoryTest {
 
 	private String defaultName;
 	private Team defaultTeam;

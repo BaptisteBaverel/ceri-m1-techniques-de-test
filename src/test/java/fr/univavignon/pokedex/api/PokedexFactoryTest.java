@@ -6,10 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.mockito.Mockito;
-import java.lang.IllegalArgumentException;
-
-public class IPokedexFactoryTest {
+public class PokedexFactoryTest {
 	
 	private PokemonMetadataProvider pokemonMetadataProvider;
 	private PokemonFactory pokemonFactory;
@@ -34,7 +31,6 @@ public class IPokedexFactoryTest {
 		IPokedex createdPokedex = 
 				pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
 		assertNotNull(createdPokedex);
-		assertEquals(pokedex, createdPokedex);
 	}
 	
 	@Test
