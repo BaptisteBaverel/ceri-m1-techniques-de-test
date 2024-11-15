@@ -27,7 +27,12 @@ public class PokemonMetadataProviderTest {
 	public void getMetadataTest() throws PokedexException {
 		PokemonMetadata metadata = pokemonMetadataProvider.getPokemonMetadata(0);
 		assertNotNull(metadata);
-		assertEquals(defaultPokemonMetadata, metadata);
+
+		assertEquals(defaultPokemonMetadata.getIndex(), metadata.getIndex());
+		assertEquals(defaultPokemonMetadata.getName(), metadata.getName());
+		assertEquals(defaultPokemonMetadata.getAttack(), metadata.getAttack());
+		assertEquals(defaultPokemonMetadata.getDefense(), metadata.getDefense());
+		assertEquals(defaultPokemonMetadata.getStamina(), metadata.getStamina());
 	}
 	
 	@Test
