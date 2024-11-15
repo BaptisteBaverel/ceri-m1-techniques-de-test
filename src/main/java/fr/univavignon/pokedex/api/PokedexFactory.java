@@ -15,7 +15,7 @@ public class PokedexFactory implements IPokedexFactory {
      * @param pokemonFactory Pokemon factory the created pokedex will use.
      * @return Created pokedex instance.
      */
-    public Pokedex createPokedex(PokemonMetadataProvider metadataProvider, PokemonFactory pokemonFactory) {
+    public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
         if (metadataProvider == null || pokemonFactory == null) {
             return null;
         }

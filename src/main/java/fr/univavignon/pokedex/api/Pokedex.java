@@ -12,11 +12,11 @@ import java.util.List;
  * @author fv
  */
 public class Pokedex implements IPokedex {
-	private final PokemonMetadataProvider pokemonMetadataProvider;
-	private final PokemonFactory pokemonFactory;
+	private final IPokemonMetadataProvider pokemonMetadataProvider;
+	private final IPokemonFactory pokemonFactory;
 	List<Pokemon> pokemonList;
 
-	Pokedex(PokemonMetadataProvider metadataProvider, PokemonFactory pokemonFactory) {
+	Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
 		this.pokemonMetadataProvider = metadataProvider;
 		this.pokemonFactory = pokemonFactory;
 		this.pokemonList = new ArrayList<Pokemon>();
