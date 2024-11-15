@@ -1,28 +1,21 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import org.mockito.Mockito;
 
-public class IPokemonMetadataProviderTest {
+import static org.junit.Assert.*;
+
+public class PokemonMetadataProviderTest {
 
 	private PokemonMetadata defaultPokemonMetadata;
-	private IPokemonMetadataProvider mockedPokemonMetadataProvider;
+	private PokemonMetadataProvider pokemonMetadataProvider;
 
 	@Before
-	public void initTestEnvironment() throws PokedexException {
-		
-		mockedPokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-
-		defaultPokemonMetadata = new PokemonMetadata(0, null, 0, 0, 0);
-		PokedexException exception = new PokedexException("Invalid Id");
-		Mockito.when(mockedPokemonMetadataProvider.getPokemonMetadata(1)).thenReturn(defaultPokemonMetadata);
-		Mockito.when(mockedPokemonMetadataProvider.getPokemonMetadata(-1)).thenThrow(exception);
-		Mockito.when(mockedPokemonMetadataProvider.getPokemonMetadata(155)).thenThrow(exception);
+	public void initTestEnvironment() {
+		pokemonMetadataProvider = new PokemonMetadataProvider();
+		defaultPokemonMetadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
 	}
 
 	@After
@@ -32,7 +25,7 @@ public class IPokemonMetadataProviderTest {
 	
 	@Test
 	public void getMetadataTest() throws PokedexException {
-		PokemonMetadata metadata = mockedPokemonMetadataProvider.getPokemonMetadata(1);
+		PokemonMetadata metadata = pokemonMetadataProvider.getPokemonMetadata(0);
 		assertNotNull(metadata);
 		assertEquals(defaultPokemonMetadata, metadata);
 	}
@@ -40,13 +33,13 @@ public class IPokemonMetadataProviderTest {
 	@Test
 	public void invalidIdExceptionTest() {
 		PokedexException exception = assertThrows(PokedexException.class, () -> {
-			mockedPokemonMetadataProvider.getPokemonMetadata(-1);
+			pokemonMetadataProvider.getPokemonMetadata(-1);
 		});
 
 		assertEquals(exception.getMessage(), "Invalid Id");
 		
 		PokedexException exception2 = assertThrows(PokedexException.class, () -> {
-			mockedPokemonMetadataProvider.getPokemonMetadata(155);
+			pokemonMetadataProvider.getPokemonMetadata(155);
 		});
 
 		assertEquals(exception2.getMessage(), "Invalid Id");
