@@ -50,8 +50,8 @@ public class PokedexTest {
 
 	@Test
 	public void addPokemonTest() {
-		assertEquals(1, pokedex.addPokemon(aquali));
-		assertEquals(2, pokedex.addPokemon(bulbizarre));
+		assertEquals(0, pokedex.addPokemon(aquali));
+		assertEquals(1, pokedex.addPokemon(bulbizarre));
 	}
 
 	@Test
