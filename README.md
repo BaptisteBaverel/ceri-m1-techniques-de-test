@@ -1,4 +1,9 @@
+
+[![codecov](https://codecov.io/gh/BaptisteBaverel/ceri-m1-techniques-de-test/graph/badge.svg?token=CJWM7518NK)](https://codecov.io/gh/BaptisteBaverel/ceri-m1-techniques-de-test)
+
 # UCE Génie Logiciel Avancé : Techniques de tests
+
+**BAVEREL Baptiste** - ILSEN (Alt)
 
 ## Introduction
 
