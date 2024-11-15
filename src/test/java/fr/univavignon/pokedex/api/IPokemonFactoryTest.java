@@ -48,13 +48,13 @@ public class IPokemonFactoryTest {
 		assertEquals(createdBulbizarre.getHp(), bulbizarre.getHp());
 		assertEquals(createdBulbizarre.getDust(), bulbizarre.getDust());
 		assertEquals(createdBulbizarre.getCandy(), bulbizarre.getCandy());
-		assertEquals(createdBulbizarre.getIv(), bulbizarre.getIv());
+		assertEquals(createdBulbizarre.getIv(), bulbizarre.getIv(), 0.0);
 
 		assertEquals(createdAquali.getCp(), aquali.getCp());
 		assertEquals(createdAquali.getHp(), aquali.getHp());
 		assertEquals(createdAquali.getDust(), aquali.getDust());
 		assertEquals(createdAquali.getCandy(), aquali.getCandy());
-		assertEquals(createdAquali.getIv(), aquali.getIv());
+		assertEquals(createdAquali.getIv(), aquali.getIv(), 0.0);
 
 		assertTrue(createdBulbizarre.getAttack() >= 126 && createdBulbizarre.getAttack() <= 126+15);
 		assertTrue(createdBulbizarre.getDefense() >= 126 && createdBulbizarre.getDefense() <= 126+15);
