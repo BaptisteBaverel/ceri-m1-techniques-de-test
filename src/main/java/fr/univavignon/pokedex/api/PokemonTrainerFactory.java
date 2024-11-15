@@ -16,7 +16,7 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 	 * @return Created trainer instance.
 	 */
 	public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
-		if (name == null || team == null || pokedexFactory == null) {
+		if (name == null || name == "" || team == null || pokedexFactory == null) {
 			return null;
 		}
 		IPokedex pokedex = pokedexFactory.createPokedex(new PokemonMetadataProvider(), new PokemonFactory());
