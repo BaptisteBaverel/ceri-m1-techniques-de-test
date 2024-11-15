@@ -12,13 +12,22 @@ import java.util.List;
 public class PokedexTest {
 	private Pokemon bulbizarre,	aquali;
 	private Pokedex pokedex, pokedexFormated;
-
 	private Comparator<Pokemon> pokemonComparator;
 	private List<Pokemon> defaultListPokemon;
 	private List<Pokemon> sortedListPokemon;
+	private PokemonMetadata defaultPokemonMetadata;
+
+
+	private PokemonMetadataProvider pokemonMetadataProvider;
+*	private PokemonFactory pokemonFactory;
+	private PokedexFactory pokedexFactory;
 
 	@Before
 	public void initTestEnvironment() {
+		defaultPokemonMetadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
+		pokemonFactory = new PokemonFactory();
+
+
 		pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
 		bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 		aquali = 	 new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
@@ -57,6 +66,7 @@ public class PokedexTest {
 	@Test
 	public void getPokemonTest() throws PokedexException {
 		assertEquals(aquali, pokedexFormated.getPokemon(133));
+		assertNull(pokedexFormated.getPokemon(120));
 
 		PokedexException exception1 = assertThrows(PokedexException.class, () -> {
 			pokedex.getPokemon(-1);
@@ -78,4 +88,25 @@ public class PokedexTest {
 	public void getPokemonsOrderedTest() {
 		assertEquals(sortedListPokemon, pokedexFormated.getPokemons(pokemonComparator));
 	}
+
+	@Test
+	public void getPokemonMetadataTest() throws PokedexException {
+		PokemonMetadata metadata = pokedex.getPokemonMetadata(0);
+		assertNotNull(metadata);
+
+		assertEquals(defaultPokemonMetadata.getIndex(), metadata.getIndex());
+
+		PokedexException exception = assertThrows(PokedexException.class, () -> {
+			pokedex.getPokemonMetadata(-1);
+		});
+
+		assertEquals(exception.getMessage(), "Invalid Id");
+	}
+
+	@Test
+	public void createPokemonTest() {
+		Pokemon createdBulbizarre = pokedex.createPokemon(0, 613, 64, 4000, 4);
+		assertNotNull(createdBulbizarre);
+	}
+
 }
