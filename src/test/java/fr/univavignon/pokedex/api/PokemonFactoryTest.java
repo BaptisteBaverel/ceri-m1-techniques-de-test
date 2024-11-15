@@ -9,18 +9,20 @@ import static org.junit.Assert.*;
 public class PokemonFactoryTest {
 	
 	private Pokemon bulbizarre,	aquali;
-	private IPokemonFactory mockedPokemonFactory;
+	private PokemonFactory pokemonFactory;
 
 	@Before
 	public void initTestEnvironment() {
+		pokemonFactory = new PokemonFactory();
+
 		bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 		aquali = 	 new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
 	}
 	
 	@Test
 	public void createPokemonTest() {
-		Pokemon createdBulbizarre = mockedPokemonFactory.createPokemon(0, 613, 64, 4000, 4);
-		Pokemon createdAquali = mockedPokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
+		Pokemon createdBulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+		Pokemon createdAquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
 
 		assertEquals(createdBulbizarre.getIndex(), bulbizarre.getIndex());
 		assertEquals(createdBulbizarre.getName(), bulbizarre.getName());
@@ -50,8 +52,8 @@ public class PokemonFactoryTest {
 	
 	@Test
 	public void createPokemonInvalidIdTest() {
-		Pokemon createdBulbizarre1 = mockedPokemonFactory.createPokemon(-1,  613, 64, 4000, 4);
-		Pokemon createdBulbizarre2 = mockedPokemonFactory.createPokemon(155,  613, 64, 4000, 4);
+		Pokemon createdBulbizarre1 = pokemonFactory.createPokemon(-1,  613, 64, 4000, 4);
+		Pokemon createdBulbizarre2 = pokemonFactory.createPokemon(155,  613, 64, 4000, 4);
 		
 		assertNull(createdBulbizarre1);
 		assertNull(createdBulbizarre2);
@@ -59,28 +61,28 @@ public class PokemonFactoryTest {
 	
 	@Test
 	public void createPokemonInvalidCPTest() {
-		Pokemon createdBulbizarre = mockedPokemonFactory.createPokemon(0, -1, 64, 4000, 4);
+		Pokemon createdBulbizarre = pokemonFactory.createPokemon(0, -1, 64, 4000, 4);
 		
 		assertNull(createdBulbizarre);
 	}
 	
 	@Test	
 	public void createPokemonInvalidHPTest() {
-		Pokemon createdBulbizarre = mockedPokemonFactory.createPokemon(0,  613, -1, 4000, 4);
+		Pokemon createdBulbizarre = pokemonFactory.createPokemon(0,  613, -1, 4000, 4);
 
 		assertNull(createdBulbizarre);
 	}
 	
 	@Test
 	public void createPokemonInvalidDustTest() {
-		Pokemon createdBulbizarre = mockedPokemonFactory.createPokemon(0,  613, 64, -1, 4);
+		Pokemon createdBulbizarre = pokemonFactory.createPokemon(0,  613, 64, -1, 4);
 
 		assertNull(createdBulbizarre);
 	}
 	
 	@Test
 	public void createPokemonInvalidCandyTest() {
-		Pokemon createdBulbizarre = mockedPokemonFactory.createPokemon(0,  613, 64, 4000, -1);
+		Pokemon createdBulbizarre = pokemonFactory.createPokemon(0,  613, 64, 4000, -1);
 
 		assertNull(createdBulbizarre);
 	}
