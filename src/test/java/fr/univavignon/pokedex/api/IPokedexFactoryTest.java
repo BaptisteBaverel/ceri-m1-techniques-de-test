@@ -11,21 +11,17 @@ import java.lang.IllegalArgumentException;
 
 public class IPokedexFactoryTest {
 	
-	private IPokemonMetadataProvider mockedPokemonMetadataProvider;
-	private IPokemonFactory mockedPokemonFactory;
-	private IPokedex mockedPokedex;
-	private IPokedexFactory mockedPokedexFactory;
+	private PokemonMetadataProvider pokemonMetadataProvider;
+	private PokemonFactory pokemonFactory;
+	private Pokedex pokedex;
+	private PokedexFactory pokedexFactory;
 		
 	@Before
 	public void initTestEnvironment() {
-		mockedPokedexFactory = Mockito.mock(IPokedexFactory.class);
-		mockedPokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-		mockedPokemonFactory = Mockito.mock(IPokemonFactory.class);
-		mockedPokedex = Mockito.mock(IPokedex.class);
-		
-		Mockito.when(mockedPokedexFactory.createPokedex(mockedPokemonMetadataProvider, mockedPokemonFactory)).thenReturn(mockedPokedex);
-		Mockito.when(mockedPokedexFactory.createPokedex(mockedPokemonMetadataProvider, null)).thenReturn(null);
-		Mockito.when(mockedPokedexFactory.createPokedex(null, mockedPokemonFactory)).thenReturn(null);
+		pokedexFactory = new PokedexFactory();
+		pokemonMetadataProvider = new PokemonMetadataProvider();
+		pokemonFactory = new PokemonFactory();
+		pokedex = new Pokedex(pokemonMetadataProvider, pokemonFactory);
 	}
 
 	@After
@@ -36,21 +32,21 @@ public class IPokedexFactoryTest {
 	@Test
 	public void createPokedexTest() {
 		IPokedex createdPokedex = 
-				mockedPokedexFactory.createPokedex(mockedPokemonMetadataProvider, mockedPokemonFactory);
+				pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
 		assertNotNull(createdPokedex);
-		assertEquals(mockedPokedex, createdPokedex);
+		assertEquals(pokedex, createdPokedex);
 	}
 	
 	@Test
 	public void createPokedexNullMetadataExceptionTest() {
-		IPokedex createdPokedex = mockedPokedexFactory.createPokedex(null, mockedPokemonFactory);
+		IPokedex createdPokedex = pokedexFactory.createPokedex(null, pokemonFactory);
 
 		assertNull(createdPokedex);
 	}
 	
 	@Test
 	public void createPokedexNullPokemonFactoryExceptionTest() {
-		IPokedex createdPokedex = mockedPokedexFactory.createPokedex(mockedPokemonMetadataProvider, null);
+		IPokedex createdPokedex = pokedexFactory.createPokedex(pokemonMetadataProvider, null);
 
 		assertNull(createdPokedex);
 	}
