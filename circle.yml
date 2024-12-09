@@ -28,7 +28,9 @@ jobs:
       - run:
           name: Run Checkstyle
           command: mvn checkstyle:check
-
+      - store_artifacts:
+          path: /checkstyle
+          destination: checkstyle-report
 workflows:
   build_and_test:
     jobs:
