@@ -19,20 +19,6 @@ jobs:
       - run: mvn -B test
       - run: mvn jacoco:report
       - run : bash <(curl -s https://codecov.io/bash)
-  generate-javadoc:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
-      - checkout
-      - run: mvn javadoc:javadoc
-      - run:
-          name: Install and configure dependencies
-          command: |
-            git config user.email "ci-build@klukas.net"
-            git config user.name "ci-build"
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: gh-pages --dist target/site/apidocs/
 
 workflows:
   build_and_test:
@@ -43,11 +29,6 @@ workflows:
               only:
                 - master
       - test:
-          filters:
-            branches:
-              only:
-                - master
-      - generate-javadoc:
           filters:
             branches:
               only:
