@@ -19,7 +19,17 @@ jobs:
       - run: mvn -B test
       - run: mvn jacoco:report
       - run : bash <(curl -s https://codecov.io/bash)
-
+  checkstyle:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:checkstyle
+      - store_artifacts:
+          path: target/site/checkstyle
+          destination: checkstyle-report
 workflows:
   build_and_test:
     jobs:
