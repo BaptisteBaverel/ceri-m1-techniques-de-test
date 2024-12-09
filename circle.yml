@@ -43,3 +43,8 @@ workflows:
             branches:
               only:
                 - master
+      - checkstyle:
+          filters:
+            branches:
+              only:
+                - master
