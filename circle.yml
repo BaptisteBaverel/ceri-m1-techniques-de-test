@@ -12,6 +12,30 @@ jobs:
       - checkout
       - run: mvn -B -DskipTests clean package
       - run: mvn checkstyle:check
+      - run:
+          name: Mettre à jour le README
+          command: |
+            if [ $? -eq 0 ]; then
+              cat "![Static Badge](https://img.shields.io/badge/checkstyle-sucess-passing?color=green)" >> README.md
+            else
+              cat "![Static Badge](https://img.shields.io/badge/checkstyle-fail-fail?color=red)" >> README.md
+            fi
+      - run:
+          name: Commit et push du README
+          command: |
+            COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+            if [[ "$COMMIT_MESSAGE" != *"skip circleci"* ]]; then
+              git config --global user.email "baptiste.baverel4@gmail.com"
+              git config --global user.name "CircleCI Bot"
+              git add README.md
+              git commit -m "Met à jour le statut du build dans le README"
+              # Configure Git to use HTTPS and the DOC_TOKEN for authentication
+              git remote set-url origin https://$TOKEN_DOC@github.com/BaptisteBaverel/ceri-m1-techniques-de-test.git
+              # Push to the master branch
+              git push origin master
+            else
+              echo "Push skipped due to commit message containing 'skip circleci'"
+            fi
 
   test:
     docker:
