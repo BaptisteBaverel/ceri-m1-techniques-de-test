@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chekout in repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.6
       - name: Java Initialize
         uses: actions/setup-java@v4
         with:
