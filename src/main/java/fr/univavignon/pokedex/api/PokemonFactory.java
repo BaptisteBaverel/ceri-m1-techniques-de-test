@@ -1,7 +1,5 @@
 package fr.univavignon.pokedex.api;
 
-import java.util.Random;
-
 public class PokemonFactory implements IPokemonFactory {
 
     /**
