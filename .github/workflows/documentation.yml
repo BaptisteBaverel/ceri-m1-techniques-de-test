@@ -2,7 +2,7 @@ name: Generation DOc
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   GenDoc:
