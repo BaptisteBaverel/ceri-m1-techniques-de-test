@@ -21,7 +21,31 @@ jobs:
       - run: mvn -B test -Dmaven.test.failure.ignore=true
       - run: mvn jacoco:report
       - run : bash <(curl -s https://codecov.io/bash)
-
+  gendoc:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - run:
+        commandes: |
+          git config --global user.name "Baverel Baptiste"
+          git config --global user.email "baptiste.baverel4@gmail.com"
+          mkdir -p /tmp/gh-pages
+          git clone https://$TOKEN_DOC@github.com/BaptisteBaverel/ceri-m1-techniques-de-test /tmp/gh-pages
+          cd /tmp/gh-pages
+          if ! git show-ref --quiet refs/heads/gh-pages; then
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "commit 1 gh-pages" > index.html
+            git add index.html
+            git commit -m "Create gh-pages Branch"
+            git push origin gh-pages
+          fi
+          cd -
+          cp -R target/site/apidocs/* /tmp/gh-pages/
+          cd /tmp/gh-pages
+          git add .
+          git commit -m "Generate doc JavaDoc"
+          git push origin gh-pages
 workflows:
   build_and_test:
     jobs:
@@ -31,6 +55,11 @@ workflows:
               only:
                 - master
       - test:
+          filters:
+            branches:
+              only:
+                - master
+      - gendoc:
           filters:
             branches:
               only:
