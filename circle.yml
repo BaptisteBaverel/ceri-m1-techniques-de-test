@@ -28,6 +28,7 @@ jobs:
               git config --global user.name "CircleCI Bot"
               git add README.md
               git commit -m "Met à jour le statut du build dans le README, skip badge"
+              git remote set-url origin https://DOC_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git
               git push origin master
             fi
   test:
