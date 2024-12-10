@@ -12,14 +12,6 @@ jobs:
       - checkout
       - run: mvn -B -DskipTests clean package
       - run: mvn checkstyle:check
-  test:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
-      - checkout
-      - run: mvn -B test -Dmaven.test.failure.ignore=true
-      - run: mvn jacoco:report
-      - run : bash <(curl -s https://codecov.io/bash)
       - run:
           name: Mettre à jour le README
           command: |
@@ -36,8 +28,17 @@ jobs:
               git config --global user.name "CircleCI Bot"
               git add README.md
               git commit -m "Met à jour le statut du build dans le README, skip badge"
-              git push origin main
+              git push origin master
             fi
+  test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run: mvn -B test -Dmaven.test.failure.ignore=true
+      - run: mvn jacoco:report
+      - run : bash <(curl -s https://codecov.io/bash)
+
 workflows:
   build_and_test:
     jobs:
