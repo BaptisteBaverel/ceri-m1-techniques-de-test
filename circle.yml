@@ -26,6 +26,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ./target/reports/apidocs
+      - run: mvn clean site
       - run:
           name: Install and configure dependencies
           command: |
