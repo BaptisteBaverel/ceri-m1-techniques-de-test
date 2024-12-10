@@ -1,0 +1,27 @@
+name: Generation DOc
+
+on:
+  commit:
+    branches: [ main ]
+
+jobs:
+  GenDoc:
+    if: github.event.pull_request.merged == true
+    name: JavaCI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chekout in repository
+        uses: actions/checkout@v4
+      - name: Java Initialize
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+          cache: 'maven'
+      - name: Maven run
+        run: mvn -B javadoc:javadoc
+      - name: Deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.DOC_TOKEN }}
+          publish_dir: ./target/reports/apidocs

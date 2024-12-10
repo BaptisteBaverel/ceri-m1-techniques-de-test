@@ -20,18 +20,7 @@ jobs:
             else
               echo -e "![Static Badge](https://img.shields.io/badge/checkstyle-fail-fail?color=red)" >> README.md
             fi
-      - run: echo $DOC_TOKEN
-      - run:
-          name: Commit et push du README
-          command: |
-            if [[ "$COMMIT_MESSAGE" != *"skip badge"* ]]; then
-              git config --global user.email "circleci@example.com"
-              git config --global user.name "CircleCI Bot"
-              git add README.md
-              git commit -m "Met à jour le statut du build dans le README, skip badge"
-              git remote set-url origin https://$DOC_TOKEN@github.com/BaptisteBaverel/ceri-m1-techniques-de-test.git
-              git push origin master
-            fi
+
   test:
     docker:
       - image: cimg/openjdk:11.0
