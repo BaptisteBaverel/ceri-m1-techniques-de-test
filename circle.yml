@@ -12,14 +12,6 @@ jobs:
       - checkout
       - run: mvn -B -DskipTests clean package
       - run: mvn checkstyle:check
-      - run:
-          name: Mettre à jour le README
-          command: |
-            if [ $? -eq 0 ]; then
-              echo -e "![Static Badge](https://img.shields.io/badge/checkstyle-sucess-passing?color=green)" >> README.md
-            else
-              echo -e "![Static Badge](https://img.shields.io/badge/checkstyle-fail-fail?color=red)" >> README.md
-            fi
 
   test:
     docker:

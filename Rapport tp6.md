@@ -1,3 +1,5 @@
+Mes test ont directement couvert tout le code de cette classe
+
 On remarque dans un premier temps que la génération de Pokemon avec des statistiqué donnée négative ne renvoie pas de valeur
 
 Un Pokemon avec un il créer un Pokemon avec un id négatif alors que les id doivent être compri entre 0 et 150, de plus il y a un TODO restant, tous les pokemon ne sont pas rajouté.

@@ -4,3 +4,7 @@
 /bin/
 .idea/
 .gitignore
+target/surefire-reports
+target/classes
+target/site/
+targettest-classes/

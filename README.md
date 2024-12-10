@@ -1,5 +1,6 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/BaptisteBaverel/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/BaptisteBaverel/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/BaptisteBaverel/ceri-m1-techniques-de-test/graph/badge.svg?token=CJWM7518NK)](https://codecov.io/gh/BaptisteBaverel/ceri-m1-techniques-de-test)
+![Checkstyle](target/site/checkstyle-result.svg)
 
 
 # UCE Génie Logiciel Avancé : Techniques de tests
