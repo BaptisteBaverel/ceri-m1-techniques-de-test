@@ -11,6 +11,13 @@ jobs:
     steps:
       - checkout
       - run: mvn -B -DskipTests clean package
+      - name: Maven run
+        run: mvn -B javadoc:javadoc
+      - name: Deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.DOC_TOKEN }}
+          publish_dir: ./target/reports/apidocs
   test:
     docker:
       - image: cimg/openjdk:11.0
