@@ -6,7 +6,6 @@ on:
 
 jobs:
   GenDoc:
-    if: github.event.pull_request.merged == true
     name: JavaCI
     runs-on: ubuntu-latest
     steps:
