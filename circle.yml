@@ -48,3 +48,8 @@ workflows:
             branches:
               only:
                 - master
+      - docs-deploy:
+          filters:
+            branches:
+              only:
+                - master
