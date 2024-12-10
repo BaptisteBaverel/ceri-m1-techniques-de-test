@@ -11,11 +11,6 @@ jobs:
     steps:
       - checkout
       - run: mvn -B -DskipTests clean package
-      - run: mvn -B javadoc:javadoc
-      - uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.DOC_TOKEN }}
-          publish_dir: ./target/reports/apidocs
   test:
     docker:
       - image: cimg/openjdk:11.0
@@ -24,6 +19,21 @@ jobs:
       - run: mvn -B test -Dmaven.test.failure.ignore=true
       - run: mvn jacoco:report
       - run : bash <(curl -s https://codecov.io/bash)
+  docs-deploy:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./target/reports/apidocs
+      - run:
+          name: Install and configure dependencies
+          command: |
+            git config user.email "ci-build@klukas.net"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist ./target/reports/apidocs
 
 workflows:
   build_and_test:
