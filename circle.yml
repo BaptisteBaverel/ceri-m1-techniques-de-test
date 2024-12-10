@@ -26,6 +26,7 @@ jobs:
     docker:
       - image: cimg/openjdk:11.0
     steps:
+      - checkout
       - run: mvn javadoc:javadoc
       - run: |
           git config --global user.name "Baverel Baptiste"
